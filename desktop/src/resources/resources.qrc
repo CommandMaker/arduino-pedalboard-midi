@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="images">
+    <file>pedalboard.svg</file>
+    <file>enabled_dot.svg</file>
+  </qresource>
+</RCC>

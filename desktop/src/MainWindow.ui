@@ -1,0 +1,940 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1100</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="pedalboard_image">
+    <property name="geometry">
+     <rect>
+      <x>150</x>
+      <y>90</y>
+      <width>800</width>
+      <height>590</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources/resources.qrc">:/images/pedalboard.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>880</x>
+      <y>357</y>
+      <width>181</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="expression_pedal_layout_master">
+     <property name="spacing">
+      <number>5</number>
+     </property>
+     <item>
+      <widget class="QCheckBox" name="checkBox">
+       <property name="text">
+        <string>Activer la pédale d'expression</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="expresion_pedal_h" stretch="0,0">
+       <property name="spacing">
+        <number>15</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="channel_label">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Canal :</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="expression_channel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>2</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="maximum">
+          <number>32767</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>170</y>
+      <width>219</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="button1_layout_master">
+     <item>
+      <widget class="QLabel" name="button1_label">
+       <property name="text">
+        <string>Bouton 1</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="button1_layout_h">
+       <item>
+        <widget class="QComboBox" name="button1_type">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>3</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <item>
+          <property name="text">
+           <string>Control Change</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Program Change</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="button1_channel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="prefix">
+          <string/>
+         </property>
+         <property name="maximum">
+          <number>32767</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>30</y>
+      <width>219</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="button2_layout_master">
+     <item>
+      <widget class="QLabel" name="button2_label">
+       <property name="text">
+        <string>Bouton 2</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="button2_layout_h">
+       <item>
+        <widget class="QComboBox" name="button2_type">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>3</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <item>
+          <property name="text">
+           <string>Control Change</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Program Change</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="button2_channel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="prefix">
+          <string/>
+         </property>
+         <property name="maximum">
+          <number>32767</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>30</y>
+      <width>219</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="button3_layout_master">
+     <item>
+      <widget class="QLabel" name="button3_label">
+       <property name="text">
+        <string>Bouton 3</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="button3_layout_h">
+       <item>
+        <widget class="QComboBox" name="button3_type">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>3</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <item>
+          <property name="text">
+           <string>Control Change</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Program Change</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="button3_channel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="prefix">
+          <string/>
+         </property>
+         <property name="maximum">
+          <number>32767</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_4">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>30</y>
+      <width>219</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="button4_layout_master">
+     <item>
+      <widget class="QLabel" name="button4_label">
+       <property name="text">
+        <string>Bouton 4</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="button4_layout_h">
+       <item>
+        <widget class="QComboBox" name="button4_type">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>3</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <item>
+          <property name="text">
+           <string>Control Change</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Program Change</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="button4_channel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="prefix">
+          <string/>
+         </property>
+         <property name="maximum">
+          <number>32767</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_5">
+    <property name="geometry">
+     <rect>
+      <x>850</x>
+      <y>170</y>
+      <width>219</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="button5_layout_master">
+     <item>
+      <widget class="QLabel" name="button5_label">
+       <property name="text">
+        <string>Bouton 5</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="button5_layout_h">
+       <item>
+        <widget class="QComboBox" name="button5_type">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>3</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <item>
+          <property name="text">
+           <string>Control Change</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Program Change</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="button5_channel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="prefix">
+          <string/>
+         </property>
+         <property name="maximum">
+          <number>32767</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_6">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>580</y>
+      <width>219</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="button6_layout_master">
+     <item>
+      <widget class="QLabel" name="button6_label">
+       <property name="text">
+        <string>Bouton 6</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="button6_layout_h">
+       <item>
+        <widget class="QComboBox" name="button6_type">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>3</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <item>
+          <property name="text">
+           <string>Control Change</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Program Change</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="button6_channel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="prefix">
+          <string/>
+         </property>
+         <property name="maximum">
+          <number>32767</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_7">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>690</y>
+      <width>219</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="button7_layout_master">
+     <item>
+      <widget class="QLabel" name="button7_label">
+       <property name="text">
+        <string>Bouton 7</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="button7_layout_h">
+       <item>
+        <widget class="QComboBox" name="button7_type">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>3</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <item>
+          <property name="text">
+           <string>Control Change</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Program Change</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="button7_channel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="prefix">
+          <string/>
+         </property>
+         <property name="maximum">
+          <number>32767</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_8">
+    <property name="geometry">
+     <rect>
+      <x>450</x>
+      <y>690</y>
+      <width>219</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="button8_layout_master">
+     <item>
+      <widget class="QLabel" name="button8_label">
+       <property name="text">
+        <string>Bouton 8</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="button8_layout_h">
+       <item>
+        <widget class="QComboBox" name="button8_type">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>3</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <item>
+          <property name="text">
+           <string>Control Change</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Program Change</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="button8_channel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="prefix">
+          <string/>
+         </property>
+         <property name="maximum">
+          <number>32767</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_9">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>690</y>
+      <width>219</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="button9_layout_master">
+     <item>
+      <widget class="QLabel" name="button9_label">
+       <property name="text">
+        <string>Bouton 9</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="button9_layout_h">
+       <item>
+        <widget class="QComboBox" name="button9_type">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>3</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <item>
+          <property name="text">
+           <string>Control Change</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Program Change</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="button9_channel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="prefix">
+          <string/>
+         </property>
+         <property name="maximum">
+          <number>32767</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_10">
+    <property name="geometry">
+     <rect>
+      <x>870</x>
+      <y>580</y>
+      <width>219</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="button10_layout_master">
+     <item>
+      <widget class="QLabel" name="button10_label">
+       <property name="text">
+        <string>Bouton 10</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="button10_layout_h">
+       <item>
+        <widget class="QComboBox" name="button10_type">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+           <horstretch>3</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <item>
+          <property name="text">
+           <string>Control Change</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Program Change</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="button10_channel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>1</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="prefix">
+          <string/>
+         </property>
+         <property name="maximum">
+          <number>32767</number>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="button1_state">
+    <property name="geometry">
+     <rect>
+      <x>327</x>
+      <y>260</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="button2_state">
+    <property name="geometry">
+     <rect>
+      <x>433</x>
+      <y>260</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="button3_state">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>260</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="button4_state">
+    <property name="geometry">
+     <rect>
+      <x>646</x>
+      <y>260</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="button5_state">
+    <property name="geometry">
+     <rect>
+      <x>753</x>
+      <y>260</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="button6_state">
+    <property name="geometry">
+     <rect>
+      <x>327</x>
+      <y>422</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="button7_state">
+    <property name="geometry">
+     <rect>
+      <x>434</x>
+      <y>422</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="button8_state">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>422</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="button9_state">
+    <property name="geometry">
+     <rect>
+      <x>647</x>
+      <y>422</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="button10_state">
+    <property name="geometry">
+     <rect>
+      <x>753</x>
+      <y>421</y>
+      <width>20</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="serial_port_enabled">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>30</y>
+      <width>76</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Activer</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1100</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_file">
+    <property name="title">
+     <string>Fichier</string>
+    </property>
+    <addaction name="action_open_preset"/>
+    <addaction name="action_save"/>
+    <addaction name="action_save_as"/>
+    <addaction name="action_presets_list"/>
+    <addaction name="separator"/>
+    <addaction name="action_quit"/>
+   </widget>
+   <addaction name="menu_file"/>
+  </widget>
+  <action name="action_open_preset">
+   <property name="text">
+    <string>Ouvrir un preset</string>
+   </property>
+  </action>
+  <action name="action_save">
+   <property name="text">
+    <string>Sauvegarder le preset</string>
+   </property>
+  </action>
+  <action name="action_save_as">
+   <property name="text">
+    <string>Sauvegarder le preset sous</string>
+   </property>
+  </action>
+  <action name="action_presets_list">
+   <property name="text">
+    <string>Presets</string>
+   </property>
+  </action>
+  <action name="action_quit">
+   <property name="text">
+    <string>Quitter</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="resources/resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
