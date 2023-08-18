@@ -11,6 +11,10 @@ public:
     void setup() const;
     void loop();
 
+    uint8_t get_button_id() const;
+
+    uint8_t get_button_state() const;
+
 private:
     uint8_t m_pin;
     uint8_t m_button_id;

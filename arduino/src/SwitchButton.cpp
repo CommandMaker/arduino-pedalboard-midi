@@ -6,8 +6,6 @@
 
 #include "SwitchButton.h"
 
-using namespace std;
-
 SwitchButton::SwitchButton(uint8_t pin, uint8_t button_id)
     : m_pin(pin), m_prev_state(0), m_button_id(button_id) {
 }
@@ -21,9 +19,13 @@ void SwitchButton::loop() {
 
     if (state != m_prev_state) {
         Serial.print(m_button_id);
-        Serial.print(",");
+        Serial.print(',');
         Serial.print(state);
     }
 
     m_prev_state = state;
 }
+
+uint8_t SwitchButton::get_button_id() const { return m_button_id; }
+
+uint8_t SwitchButton::get_button_state() const { return m_prev_state; }

@@ -1,8 +1,10 @@
 project(application)
 
-find_package(Qt6 REQUIRED COMPONENTS Widgets SerialPort)
+set(CMAKE_AUTOUIC ON)
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 
-set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin/)
+find_package(Qt6 REQUIRED COMPONENTS Widgets SerialPort)
 
 set(QT_RESOURCES resources/resources.qrc)
 
@@ -11,7 +13,15 @@ set(PROJECT_SOURCES
         MainWindow.cpp
         MainWindow.h
         MainWindow.ui
+        communication/SerialCommunication.cpp
+        communication/SerialCommunication.h
+        communication/MIDICommunication.cpp
+        communication/MIDICommunication.h
 )
+
+if (WIN32 AND CMAKE_BUILD_TYPE STREQUAL "Release")
+    set(CMAKE_WIN32_EXECUTABLE ON)
+endif ()
 
 qt_add_executable(application
         MANUAL_FINALIZATION
@@ -19,7 +29,7 @@ qt_add_executable(application
         ${QT_RESOURCES}
 )
 
-target_link_libraries(application PRIVATE Qt6::Widgets Qt6::SerialPort)
+target_link_libraries(application PRIVATE Qt6::Widgets Qt6::SerialPort rtmidi)
 
 include(GNUInstallDirs)
 install(TARGETS application

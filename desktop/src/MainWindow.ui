@@ -884,6 +884,16 @@
      <string>Activer</string>
     </property>
    </widget>
+   <widget class="QComboBox" name="midi_port_selection">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>80</y>
+      <width>171</width>
+      <height>22</height>
+     </rect>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
