@@ -5,7 +5,6 @@
 #include "SerialCommunication.h"
 
 #include <QMessageBox>
-#include "RtMidi.h"
 
 SerialCommunication::SerialCommunication() {
     m_serial = new QSerialPort();

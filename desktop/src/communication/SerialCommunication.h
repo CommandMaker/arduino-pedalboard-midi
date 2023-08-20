@@ -7,7 +7,6 @@
 
 #include <QObject>
 #include <QSerialPort>
-#include "RtMidi.h"
 
 class SerialCommunication : public QObject {
 Q_OBJECT

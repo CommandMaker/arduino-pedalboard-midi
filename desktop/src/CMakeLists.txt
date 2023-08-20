@@ -1,5 +1,8 @@
 project(application)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
@@ -13,10 +16,14 @@ set(PROJECT_SOURCES
         MainWindow.cpp
         MainWindow.h
         MainWindow.ui
+        JSONManipulator.cpp
+        JSONManipulator.h
         communication/SerialCommunication.cpp
         communication/SerialCommunication.h
         communication/MIDICommunication.cpp
         communication/MIDICommunication.h
+        config/AppConfiguration.cpp
+        config/AppConfiguration.h
 )
 
 if (WIN32 AND CMAKE_BUILD_TYPE STREQUAL "Release")

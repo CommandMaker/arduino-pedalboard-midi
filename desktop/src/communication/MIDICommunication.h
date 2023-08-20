@@ -6,7 +6,7 @@
 #define MIDI_CONTROL_SOFTWARE_MIDICOMMUNICATION_H
 
 #include <QString>
-#include "RtMidi.h"
+#include <RtMidi.h>
 
 class MIDICommunication {
 public:
@@ -23,6 +23,8 @@ public:
     void send_program_change(int program);
 
     QVector<QString> &get_available_ports();
+
+    QString get_port_from_id(int port_id);
 
 private:
     RtMidiOut *m_midi;

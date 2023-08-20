@@ -2,13 +2,18 @@
 #include "./ui_MainWindow.h"
 
 #include <QMessageBox>
+#include <filesystem>
+#include <fstream>
+#include "config/AppConfiguration.h"
 
-using namespace std;
+using namespace std::filesystem;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+    create_config_file_if_needed();
+
     ui->setupUi(this);
     setup_file_menu();
 
@@ -51,12 +56,18 @@ void MainWindow::setup_file_menu() {
  */
 void MainWindow::setup_midi_choices_combo() {
     ui->midi_port_selection->clear();
+    QString config_port = m_config.get_midi_port();
 
-    for (const QString &port: m_midi->get_available_ports()) {
+    for (unsigned short i = 0; const QString &port: m_midi->get_available_ports()) {
         ui->midi_port_selection->addItem(port);
+
+        if (config_port != nullptr && port == config_port) {
+            ui->midi_port_selection->setCurrentIndex(i);
+        }
     }
 
     connect(ui->midi_port_selection, &QComboBox::currentIndexChanged, this, [this](int index) {
+        m_config.set_midi_port(m_midi->get_port_from_id(index));
         m_selected_midi_port = index;
         qDebug() << "Selected MIDI port :" << ui->midi_port_selection->itemText(index) << "with port id :" << index;
     });
@@ -93,5 +104,20 @@ void MainWindow::handle_button_change(int button_id, int button_state) {
             button_state == 0 ? ui->button2_state->hide() : ui->button2_state->show();
             m_midi->send_control_change(ui->button2_channel->value(), button_state ? 0 : 127);
             break;
+    }
+}
+
+/**
+ * Create the configuration file if it doesn't exist
+ */
+void MainWindow::create_config_file_if_needed() {
+    path config_path = current_path() / "config";
+
+    if (!exists(config_path)) {
+        create_directory(config_path);
+
+        std::ofstream file(config_path / "config.json");
+        file << "{}";
+        file.close();
     }
 }

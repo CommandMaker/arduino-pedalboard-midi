@@ -4,7 +4,7 @@
 
 #include "MIDICommunication.h"
 
-#include "RtMidi.h"
+#include <RtMidi.h>
 #include <QMessageBox>
 
 MIDICommunication::MIDICommunication() {
@@ -36,6 +36,19 @@ QVector<QString> &MIDICommunication::get_available_ports() {
     }
 
     return ports;
+}
+
+/**
+ * Get the port name from its id
+ *
+ * @param port_id
+ * @return
+ */
+QString MIDICommunication::get_port_from_id(int port_id) {
+    std::string port_name = m_midi->getPortName(port_id);
+    port_name = port_name.substr(0, port_name.size() - 2);
+
+    return QString::fromStdString(port_name);
 }
 
 /**
