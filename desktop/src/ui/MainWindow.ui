@@ -27,7 +27,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources/resources.qrc">:/images/pedalboard.svg</pixmap>
+     <pixmap resource="../resources/resources.qrc">:/images/pedalboard.svg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -81,6 +81,9 @@
          </property>
          <property name="maximum">
           <number>32767</number>
+         </property>
+         <property name="value">
+          <number>12</number>
          </property>
         </widget>
        </item>
@@ -200,6 +203,9 @@
          <property name="maximum">
           <number>32767</number>
          </property>
+         <property name="value">
+          <number>1</number>
+         </property>
         </widget>
        </item>
       </layout>
@@ -258,6 +264,9 @@
          </property>
          <property name="maximum">
           <number>32767</number>
+         </property>
+         <property name="value">
+          <number>2</number>
          </property>
         </widget>
        </item>
@@ -318,6 +327,9 @@
          <property name="maximum">
           <number>32767</number>
          </property>
+         <property name="value">
+          <number>3</number>
+         </property>
         </widget>
        </item>
       </layout>
@@ -376,6 +388,9 @@
          </property>
          <property name="maximum">
           <number>32767</number>
+         </property>
+         <property name="value">
+          <number>4</number>
          </property>
         </widget>
        </item>
@@ -436,6 +451,9 @@
          <property name="maximum">
           <number>32767</number>
          </property>
+         <property name="value">
+          <number>5</number>
+         </property>
         </widget>
        </item>
       </layout>
@@ -494,6 +512,9 @@
          </property>
          <property name="maximum">
           <number>32767</number>
+         </property>
+         <property name="value">
+          <number>6</number>
          </property>
         </widget>
        </item>
@@ -554,6 +575,9 @@
          <property name="maximum">
           <number>32767</number>
          </property>
+         <property name="value">
+          <number>9</number>
+         </property>
         </widget>
        </item>
       </layout>
@@ -612,6 +636,9 @@
          </property>
          <property name="maximum">
           <number>32767</number>
+         </property>
+         <property name="value">
+          <number>10</number>
          </property>
         </widget>
        </item>
@@ -672,6 +699,9 @@
          <property name="maximum">
           <number>32767</number>
          </property>
+         <property name="value">
+          <number>11</number>
+         </property>
         </widget>
        </item>
       </layout>
@@ -691,7 +721,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+     <pixmap resource="../resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -710,7 +740,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+     <pixmap resource="../resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -729,7 +759,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+     <pixmap resource="../resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -748,7 +778,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+     <pixmap resource="../resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -767,7 +797,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+     <pixmap resource="../resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -786,7 +816,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+     <pixmap resource="../resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -805,7 +835,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+     <pixmap resource="../resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -824,7 +854,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+     <pixmap resource="../resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -843,7 +873,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+     <pixmap resource="../resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -862,7 +892,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap resource="resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
+     <pixmap resource="../resources/resources.qrc">:/images/enabled_dot.svg</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>
@@ -884,16 +914,6 @@
      <string>Activer</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="midi_port_selection">
-    <property name="geometry">
-     <rect>
-      <x>30</x>
-      <y>80</y>
-      <width>171</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -913,6 +933,7 @@
     <addaction name="action_save_as"/>
     <addaction name="action_presets_list"/>
     <addaction name="separator"/>
+    <addaction name="action_settings"/>
     <addaction name="action_quit"/>
    </widget>
    <addaction name="menu_file"/>
@@ -942,9 +963,15 @@
     <string>Quitter</string>
    </property>
   </action>
+  <action name="action_settings">
+   <property name="text">
+    <string>Paramètres</string>
+   </property>
+  </action>
  </widget>
  <resources>
-  <include location="resources/resources.qrc"/>
+  <include location="../resources/resources.qrc"/>
+  <include location="../resources/resources.qrc"/>
  </resources>
  <connections/>
 </ui>

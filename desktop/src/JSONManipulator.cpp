@@ -9,16 +9,9 @@
 
 using namespace std::filesystem;
 
-JSONManipulator::JSONManipulator(const QString &path) {
-    QString val;
-    QFile config_file(path);
-    if (!config_file.exists()) return;
-    config_file.open(QIODevice::ReadWrite | QIODevice::Text);
-    val = config_file.readAll();
-    QJsonDocument doc = QJsonDocument::fromJson(val.toUtf8());
-    m_root = doc.object();
+JSONManipulator::JSONManipulator(const QString &path) : m_path(path) {
+    reload_file();
 }
-
 
 void JSONManipulator::set(const QString &key, const QVariant &value) {
     QStringList pathComponents = key.split('.');
@@ -93,4 +86,23 @@ bool JSONManipulator::has(const QString &key) const {
 
 std::string JSONManipulator::get_json() const {
     return QJsonDocument(m_root).toJson(QJsonDocument::Compact).toStdString();
+}
+
+void JSONManipulator::reload_file() {
+    QFile file(m_path);
+    if (!file.exists()) return;
+    file.open(QIODevice::ReadWrite | QIODevice::Text);
+    QString val = file.readAll();
+
+    m_root = QJsonDocument::fromJson(val.toUtf8()).object();
+}
+
+void JSONManipulator::flush() {
+    QFile f = QFile(m_path);
+    if (!f.exists()) return;
+    f.open(QIODevice::ReadWrite | QIODevice::Text);
+    f.resize(0);
+
+    f.write(get_json().c_str());
+    f.close();
 }

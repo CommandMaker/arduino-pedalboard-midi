@@ -17,28 +17,6 @@ MIDICommunication::~MIDICommunication() {
 }
 
 /**
- * List all available MIDI ports as a QMap
- */
-QVector<QString> &MIDICommunication::get_available_ports() {
-    static QVector<QString> ports;
-
-    try {
-        unsigned int port_count = m_midi->getPortCount();
-
-        for (int i = 0; i < port_count; i++) {
-            std::string port_name = m_midi->getPortName(i);
-            port_name = port_name.substr(0, port_name.size() - 2);
-            ports.push_back(QString::fromStdString(port_name));
-        }
-    } catch (RtMidiError err) {
-        QMessageBox::critical(nullptr, "Error",
-                              "Error while scanning midi ports : " + QString::fromStdString(err.getMessage()));
-    }
-
-    return ports;
-}
-
-/**
  * Get the port name from its id
  *
  * @param port_id
@@ -49,6 +27,26 @@ QString MIDICommunication::get_port_from_id(int port_id) {
     port_name = port_name.substr(0, port_name.size() - 2);
 
     return QString::fromStdString(port_name);
+}
+
+/**
+ * Get MIDI port id from its name
+ *
+ * @param port_name
+ * @return
+ */
+int MIDICommunication::get_port_from_name(const QString &port_name) {
+    const int ports = m_midi->getPortCount();
+
+    for (int i = 0; i < ports; i++) {
+        const std::string port = m_midi->getPortName(i);
+
+        if (port.substr(0, port.size() - 2) == port_name.toStdString()) {
+            return i;
+        }
+    }
+
+    return -1;
 }
 
 /**

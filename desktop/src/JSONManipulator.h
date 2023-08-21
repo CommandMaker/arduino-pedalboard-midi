@@ -21,8 +21,13 @@ public:
 
     std::string get_json() const;
 
+    void reload_file();
+
+    void flush();
+
 private:
     QJsonObject m_root;
+    QString m_path;
 };
 
 

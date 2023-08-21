@@ -22,9 +22,9 @@ public:
 
     void send_program_change(int program);
 
-    QVector<QString> &get_available_ports();
-
     QString get_port_from_id(int port_id);
+
+    int get_port_from_name(const QString &port_name);
 
 private:
     RtMidiOut *m_midi;

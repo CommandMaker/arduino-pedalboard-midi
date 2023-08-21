@@ -3,9 +3,9 @@
 
 #include <QMainWindow>
 
-#include "communication/SerialCommunication.h"
-#include "communication/MIDICommunication.h"
-#include "config/AppConfiguration.h"
+#include "../communication/SerialCommunication.h"
+#include "../communication/MIDICommunication.h"
+#include "../config/AppConfiguration.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -27,8 +27,6 @@ private:
     int m_selected_midi_port;
 
     void setup_file_menu();
-
-    void setup_midi_choices_combo();
 
     void create_config_file_if_needed();
 

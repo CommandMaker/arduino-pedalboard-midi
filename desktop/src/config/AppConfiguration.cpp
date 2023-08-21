@@ -4,35 +4,20 @@
 
 #include "AppConfiguration.h"
 
-#include <filesystem>
+#include <QCoreApplication>
 
-#define CONFIG_PATH current_path() / "config" / "config.json"
+#define CONFIG_PATH QCoreApplication::applicationDirPath() + "/config" + "/config.json"
 
 using namespace std::filesystem;
 
-AppConfiguration::AppConfiguration()
-        : m_json(QString::fromStdString((CONFIG_PATH).string())) {
-}
-
-/**
- * Write stored config to the file
- */
-void AppConfiguration::flush() const {
-    QFile f = QFile(QString::fromStdString((CONFIG_PATH).string()));
-    if (!f.exists()) return;
-    f.open(QIODevice::ReadWrite | QIODevice::Text);
-    f.resize(0);
-
-    f.write(m_json.get_json().c_str());
-    f.close();
+AppConfiguration::AppConfiguration() : JSONManipulator(CONFIG_PATH) {
 }
 
 /**
  * Set the serial port to the config file
  */
 void AppConfiguration::set_serial_port(const QString &serial_port) {
-    m_json.set("serial.port", serial_port);
-    flush();
+    set("serial.port", serial_port);
 }
 
 /**
@@ -41,7 +26,7 @@ void AppConfiguration::set_serial_port(const QString &serial_port) {
  * @return
  */
 QString AppConfiguration::get_serial_port() {
-    return m_json.has("serial.port") ? m_json.get("serial.port").toString() : nullptr;
+    return has("serial.port") ? get("serial.port").toString() : nullptr;
 }
 
 /**
@@ -50,7 +35,7 @@ QString AppConfiguration::get_serial_port() {
  * @return
  */
 QString AppConfiguration::get_midi_port() {
-    return m_json.has("midi.port") ? m_json.get("midi.port").toString() : nullptr;
+    return has("midi.port") ? get("midi.port").toString() : nullptr;
 }
 
 /**
@@ -59,6 +44,5 @@ QString AppConfiguration::get_midi_port() {
  * @param midi_port
  */
 void AppConfiguration::set_midi_port(const QString &midi_port) {
-    m_json.set("midi.port", midi_port);
-    flush();
+    set("midi.port", midi_port);
 }

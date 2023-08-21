@@ -13,9 +13,9 @@ set(QT_RESOURCES resources/resources.qrc)
 
 set(PROJECT_SOURCES
         main.cpp
-        MainWindow.cpp
-        MainWindow.h
-        MainWindow.ui
+        ui/MainWindow.cpp
+        ui/MainWindow.h
+        ui/MainWindow.ui
         JSONManipulator.cpp
         JSONManipulator.h
         communication/SerialCommunication.cpp
@@ -24,6 +24,9 @@ set(PROJECT_SOURCES
         communication/MIDICommunication.h
         config/AppConfiguration.cpp
         config/AppConfiguration.h
+        ui/settings/SettingsDialog.cpp
+        ui/settings/SettingsDialog.h
+        ui/settings/SettingsDialog.ui
 )
 
 if (WIN32 AND CMAKE_BUILD_TYPE STREQUAL "Release")

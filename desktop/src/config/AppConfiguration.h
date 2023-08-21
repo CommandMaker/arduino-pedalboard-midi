@@ -7,7 +7,7 @@
 
 #include "../JSONManipulator.h"
 
-class AppConfiguration {
+class AppConfiguration : public JSONManipulator {
 public:
     explicit AppConfiguration();
 
@@ -24,11 +24,6 @@ public:
     QString get_serial_port();
 
     QString get_midi_port();
-
-    void flush() const;
-
-private:
-    JSONManipulator m_json;
 };
 
 
