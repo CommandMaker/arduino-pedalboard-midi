@@ -20,7 +20,7 @@ void SwitchButton::loop() {
     if (state != m_prev_state) {
         Serial.print(m_button_id);
         Serial.print(',');
-        Serial.print(state);
+        Serial.println(state);
     }
 
     m_prev_state = state;

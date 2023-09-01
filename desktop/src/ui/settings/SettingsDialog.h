@@ -30,6 +30,8 @@ private:
     void accept() override;
 
     void setup_midi_choices_combo();
+
+    void setup_serial_choices_combo();
 };
 
 

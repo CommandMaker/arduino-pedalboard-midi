@@ -3,19 +3,30 @@
 
 SwitchButton button1(2, 1);
 SwitchButton button2(3, 2);
+SwitchButton button3(4, 3);
+SwitchButton button4(5, 4);
+SwitchButton button5(6, 5);
+SwitchButton button6(7, 6);
+SwitchButton button7(8, 7);
+SwitchButton button8(9, 8);
+SwitchButton button9(10, 9);
+SwitchButton button10(11, 10);
 
-SwitchButton *buttons[2] = {&button1, &button2};
+SwitchButton *buttons[10] = {&button1, &button2, &button3, &button4, &button5, &button6, &button7, &button8, &button9,
+                             &button10};
 
 void setup() {
-    Serial.begin(115200);
+    Serial.begin(9600);
 
-    button1.setup();
-    button2.setup();
+    for (const SwitchButton *button: buttons) {
+        button->setup();
+    }
 }
 
 void loop() {
-    button1.loop();
-    button2.loop();
+    for (SwitchButton *button: buttons) {
+        button->loop();
+    }
 
     if (Serial.available() > 0) {
         String data = Serial.readString();

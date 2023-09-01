@@ -30,6 +30,8 @@ public:
 
     void ask_buttons_state();
 
+    QString get_port_from_device_name(const QString &device_name) const;
+
 signals:
 
     void init_buttons_state_gathered(QStringList buttons);

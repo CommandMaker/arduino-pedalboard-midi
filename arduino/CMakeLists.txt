@@ -4,7 +4,8 @@ set(CMAKE_TOOLCHAIN_FILE ${CMAKE_SOURCE_DIR}/cmake/ArduinoToolchain.cmake)
 set(CMAKE_CXX_STANDARD 17)
 set(PROJECT_NAME arduino)
 
-set(${PROJECT_NAME}_BOARD uno)
+set(${PROJECT_NAME}_BOARD nano)
+set(ARDUINO_CPU atmega328old)
 # set(ARDUINO_CPU)
 project(${PROJECT_NAME})
 
@@ -38,7 +39,7 @@ set(${PROJECT_NAME}_SKETCH
 
 #### Additional settings for programmer. From programmers.txt
 set(${PROJECT_NAME}_PROGRAMMER avrisp)
-set(${PROJECT_NAME}_PORT COM3)
+set(${PROJECT_NAME}_PORT COM4)
 # set(uno.upload.speed 9600)
 
 ## Verbose build process

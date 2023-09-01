@@ -2,6 +2,8 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QLabel>
+#include <QSpinBox>
 
 #include "../communication/SerialCommunication.h"
 #include "../communication/MIDICommunication.h"
@@ -25,6 +27,9 @@ private:
     MIDICommunication *m_midi;
     AppConfiguration m_config;
     int m_selected_midi_port;
+
+    QList<QLabel *> m_buttons_state_indicator;
+    QList<QSpinBox *> m_buttons_channels;
 
     void setup_file_menu();
 

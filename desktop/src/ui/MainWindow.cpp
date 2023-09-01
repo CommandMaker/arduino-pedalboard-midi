@@ -17,21 +17,26 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     setup_file_menu();
 
+    /*
+     * Initialize serial connection
+     */
     m_serial = new SerialCommunication;
     connect(m_serial, &SerialCommunication::button_changed_state, this, &MainWindow::handle_button_change);
 
+    /*
+     * Initialize MIDI connection
+     */
     m_midi = new MIDICommunication;
 
-    ui->button1_state->hide();
-    ui->button2_state->hide();
-    ui->button3_state->hide();
-    ui->button4_state->hide();
-    ui->button5_state->hide();
-    ui->button6_state->hide();
-    ui->button7_state->hide();
-    ui->button8_state->hide();
-    ui->button9_state->hide();
-    ui->button10_state->hide();
+    m_buttons_channels = ui->centralwidget->findChildren<QSpinBox *>(QRegularExpression("^button"));
+    m_buttons_state_indicator = ui->centralwidget->findChildren<QLabel *>(QRegularExpression("_state$"));
+
+    /*
+     * Hide buttons state (red dot)
+     */
+    for (QLabel *indicator: m_buttons_state_indicator) {
+        indicator->hide();
+    }
 
     connect(ui->serial_port_enabled, &QCheckBox::clicked, this, &MainWindow::serial_port_checkbox_change);
 }
@@ -64,8 +69,17 @@ void MainWindow::setup_file_menu() {
 void MainWindow::serial_port_checkbox_change(bool checked) {
     if (checked) {
         int port_id = m_midi->get_port_from_name(m_config.get("midi.port").toString());
+        QString serial_port = m_serial->get_port_from_device_name(m_config.get_serial_port());
 
-        qDebug() << m_config.get("midi.port").toString();
+        if (serial_port == nullptr) {
+            QMessageBox::critical(this, "Error", "Error when opening the serial connection : Port introuvable");
+
+            ui->serial_port_enabled->setCheckState(Qt::Unchecked);
+            m_serial->close_serial_communication();
+            m_midi->close_midi_port();
+
+            return;
+        }
 
         if (port_id == -1) {
             QMessageBox::critical(this, "Error", "Error when opening the MIDI connection : Port introuvable");
@@ -77,7 +91,7 @@ void MainWindow::serial_port_checkbox_change(bool checked) {
             return;
         }
 
-        if (m_serial->open_serial_communication("COM3", QSerialPort::Baud115200) &&
+        if (m_serial->open_serial_communication(serial_port, QSerialPort::Baud2400) &&
             m_midi->open_midi_port(port_id))
             return;
     }
@@ -91,18 +105,8 @@ void MainWindow::serial_port_checkbox_change(bool checked) {
 * Handle when a button changes state on the pedalboard
 */
 void MainWindow::handle_button_change(int button_id, int button_state) {
-    qInfo() << "Button id :" << button_id << "/ Button state :" << button_state;
-
-    switch (button_id) {
-        case 1:
-            button_state == 0 ? ui->button1_state->hide() : ui->button1_state->show();
-            m_midi->send_control_change(ui->button1_channel->value(), button_state ? 0 : 127);
-            break;
-        case 2:
-            button_state == 0 ? ui->button2_state->hide() : ui->button2_state->show();
-            m_midi->send_control_change(ui->button2_channel->value(), button_state ? 0 : 127);
-            break;
-    }
+    button_state ? m_buttons_state_indicator[button_id - 1]->show() : m_buttons_state_indicator[button_id - 1]->hide();
+    m_midi->send_control_change(m_buttons_channels[button_id - 1]->value(), button_state ? 0 : 127);
 }
 
 /**

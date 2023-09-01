@@ -56,6 +56,7 @@ int MIDICommunication::get_port_from_name(const QString &port_name) {
 bool MIDICommunication::open_midi_port(int port_id) {
     try {
         m_midi->openPort(port_id);
+        qInfo() << "MIDI connection opened on port" << get_port_from_id(port_id);
         return true;
     } catch (RtMidiError err) {
         QMessageBox::critical(nullptr, "Error",
@@ -65,6 +66,7 @@ bool MIDICommunication::open_midi_port(int port_id) {
 }
 
 void MIDICommunication::close_midi_port() {
+    qInfo() << "Closing MIDI communication";
     m_midi->closePort();
 }
 

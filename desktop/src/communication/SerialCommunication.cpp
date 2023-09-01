@@ -5,6 +5,7 @@
 #include "SerialCommunication.h"
 
 #include <QMessageBox>
+#include <QSerialPortInfo>
 
 SerialCommunication::SerialCommunication() {
     m_serial = new QSerialPort();
@@ -53,9 +54,7 @@ bool SerialCommunication::open_serial_communication(
             QMessageBox::critical(parent, "Error", "Error while opening serial port : " + m_serial->errorString());
         }
 
-        if (open) {
-            ask_buttons_state();
-        }
+        qInfo() << "Serial connection opened on port" << m_serial->portName();
 
         return open;
     }
@@ -67,6 +66,7 @@ bool SerialCommunication::open_serial_communication(
  * Close the serial connection if open
  */
 void SerialCommunication::close_serial_communication() {
+    qInfo() << "Closing serial communication";
     if (m_serial->isOpen()) m_serial->close();
 }
 
@@ -74,7 +74,9 @@ void SerialCommunication::close_serial_communication() {
  * Callback triggered when data are available on serial port
  */
 void SerialCommunication::data_received() {
-    QString data = QString(m_serial->readAll());
+    if (!m_serial->canReadLine()) return;
+
+    QString data = QString(m_serial->readLine()).trimmed();
 
     if (data.startsWith("buttons_state")) {
         QStringList buttons_state = data.sliced(0, data.size() - 1).split(':')[1].split('/');
@@ -89,6 +91,26 @@ void SerialCommunication::data_received() {
         if (a.size() != 2) return;
 
         emit button_changed_state(a.at(0).toInt(), a.at(1).toInt());
+    }
+}
+
+/**
+ * Get the corresponding COM from device name (ex: "Arduino UNO")
+ *
+ * @param device_name
+ * @return
+ */
+QString SerialCommunication::get_port_from_device_name(const QString &device_name) const {
+    QList<QSerialPortInfo> available_ports = QSerialPortInfo::availablePorts();
+
+    auto a = std::find_if(available_ports.begin(), available_ports.end(), [device_name](QSerialPortInfo port) {
+        return port.description() == device_name;
+    });
+
+    if (a != available_ports.end()) {
+        return a->portName();
+    } else {
+        return nullptr;
     }
 }
 
